@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.regex.Pattern;
 
 /**
  * A shader source based on Java resources. Resources will be resolved
@@ -33,34 +35,38 @@ import java.util.Optional;
 public final class SoShaderStoreResource implements SoShaderStoreType
 {
   private static final Logger LOG;
+  private static final Pattern SLASHES;
 
   static {
     LOG = LoggerFactory.getLogger(SoShaderStoreResource.class);
+    SLASHES = Pattern.compile("/+");
   }
 
   private final String base;
-  private final Class<?> clazz;
+  private final Function<String, URL> loader;
 
   private SoShaderStoreResource(
     final String in_base,
-    final Class<?> in_clazz)
+    final Function<String, URL> in_loader)
   {
     this.base = NullCheck.notNull(in_base, "Base");
-    this.clazz = NullCheck.notNull(in_clazz, "Clazz");
+    this.loader = NullCheck.notNull(in_loader, "Loader");
   }
 
   /**
    * Construct a new shader store.
    *
    * @param base The base directory
-   * @param c    The class that will be used to resolve resources
+   * @param c    A function that will be used to resolve resources. This is
+   *             intended to be a method reference to {@link
+   *             Class#getResource(String)}.
    *
    * @return A shader store
    */
 
   public static SoShaderStoreType create(
     final String base,
-    final Class<?> c)
+    final Function<String, URL> c)
   {
     return new SoShaderStoreResource(base, c);
   }
@@ -72,13 +78,14 @@ public final class SoShaderStoreResource implements SoShaderStoreType
   {
     NullCheck.notNull(name, "name");
 
-    final String target = this.base + "/" + name;
+    final String target =
+      SLASHES.matcher((this.base + "/" + name)).replaceAll("/");
 
     if (LOG.isDebugEnabled()) {
-      LOG.debug("open: {}:{}", this.clazz, target);
+      LOG.debug("open: {} {}", this.loader, target);
     }
 
-    final URL url = this.clazz.getResource(target);
+    final URL url = this.loader.apply(target);
     if (url != null) {
       return Optional.of(new Reference(url));
     }

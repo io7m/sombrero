@@ -38,7 +38,8 @@ public final class SoShaderStoreResourceTest
   {
     final SoShaderStoreType source =
       SoShaderStoreResource.create(
-        "/com/io7m/sombrero/tests/core", SoShaderStoreResourceTest.class);
+        "/com/io7m/sombrero/tests/core",
+        SoShaderStoreResourceTest.class::getResource);
 
     Assert.assertEquals(Optional.empty(), source.lookup("/file.txt"));
   }
@@ -49,7 +50,8 @@ public final class SoShaderStoreResourceTest
   {
     final SoShaderStoreType source =
       SoShaderStoreResource.create(
-        "/com/io7m/sombrero/tests/core", SoShaderStoreResourceTest.class);
+        "/com/io7m/sombrero/tests/core",
+        SoShaderStoreResourceTest.class::getResource);
 
     final Optional<SoShaderFileReferenceType> ref_opt =
       source.lookup("example.txt");
@@ -73,7 +75,8 @@ public final class SoShaderStoreResourceTest
   {
     final SoShaderStoreType source =
       SoShaderStoreResource.create(
-        "/com/io7m/sombrero/tests/core", SoShaderStoreResourceTest.class);
+        "/com/io7m/sombrero/tests/core",
+        SoShaderStoreResourceTest.class::getResource);
 
     final Optional<SoShaderFileReferenceType> ref_opt =
       source.lookup("/example.txt");

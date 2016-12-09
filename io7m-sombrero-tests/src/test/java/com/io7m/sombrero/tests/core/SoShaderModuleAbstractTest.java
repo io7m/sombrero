@@ -33,7 +33,8 @@ public final class SoShaderModuleAbstractTest
     final SoShaderModule m =
       SoShaderModule.of(
         "a",
-        SoShaderStoreResource.create("/", SoShaderModuleAbstractTest.class));
+        SoShaderStoreResource.create(
+          "/", SoShaderStoreResourceTest.class::getResource));
 
     this.expected.expect(IllegalArgumentException.class);
     new SoShaderModuleProviderAbstract(m, m)

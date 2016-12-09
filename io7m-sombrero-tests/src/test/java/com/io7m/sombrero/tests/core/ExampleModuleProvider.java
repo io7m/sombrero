@@ -32,10 +32,12 @@ public final class ExampleModuleProvider extends SoShaderModuleProviderAbstract
       SoShaderModule.of(
         "com.io7m.sombrero.example0",
         SoShaderStoreResource.create(
-          "/com/io7m/sombrero/tests/core", ExampleModuleProvider.class)),
+          "/com/io7m/sombrero/tests/core",
+          ExampleModuleProvider.class::getResource)),
       SoShaderModule.of(
         "com.io7m.sombrero.example1",
         SoShaderStoreResource.create(
-          "/com/io7m/sombrero/tests/core", ExampleModuleProvider.class)));
+          "/com/io7m/sombrero/tests/core",
+          ExampleModuleProvider.class::getResource)));
   }
 }
