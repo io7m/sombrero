@@ -18,9 +18,9 @@
     <subsection name="Features">
       <ul>
         <li>Simple module system for publishing shader libraries.</li>
-        <li>Preprocessing system for GLSL, including an <tt>#include</tt> directive that supports local and cross-module imports.</li>
-        <li>Optional automatic insertion of <tt>#version</tt> directives.</li>
-        <li>Auto-discovery of shader libraries via <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">ServiceLoader</a>.
+        <li>Preprocessing system for GLSL, including an <tt>include</tt> directive that supports local and cross-module imports.</li>
+        <li>Optional automatic insertion of <tt>version</tt> directives.</li>
+        <li>Auto-discovery of shader libraries via <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">ServiceLoader</a>.</li>
         <li>ISC license.</li>
       </ul>
     </subsection>
