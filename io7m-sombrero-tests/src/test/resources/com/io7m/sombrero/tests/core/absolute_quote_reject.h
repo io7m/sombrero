@@ -1,0 +1,4 @@
+#ifndef ABSOLUTE_QUOTE_REJECT_H
+#define ABSOLUTE_QUOTE_REJECT_H
+#include "/file0.h"
+#endif /* ABSOLUTE_QUOTE_REJECT_H */
