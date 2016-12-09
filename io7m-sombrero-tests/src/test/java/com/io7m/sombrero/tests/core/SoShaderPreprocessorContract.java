@@ -16,7 +16,6 @@
 
 package com.io7m.sombrero.tests.core;
 
-import com.io7m.sombrero.core.SoShaderException;
 import com.io7m.sombrero.core.SoShaderExceptionIO;
 import com.io7m.sombrero.core.SoShaderPreprocessorConfig;
 import com.io7m.sombrero.core.SoShaderPreprocessorType;

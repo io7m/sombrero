@@ -26,11 +26,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public final class SoShaderModuleResolverTest

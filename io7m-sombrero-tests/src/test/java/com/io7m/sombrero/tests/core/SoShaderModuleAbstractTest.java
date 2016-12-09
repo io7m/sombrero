@@ -31,11 +31,13 @@ public final class SoShaderModuleAbstractTest
   public void testDuplicateModule()
   {
     final SoShaderModule m =
-      SoShaderModule.of("a",
-      SoShaderStoreResource.create("/", SoShaderModuleAbstractTest.class));
+      SoShaderModule.of(
+        "a",
+        SoShaderStoreResource.create("/", SoShaderModuleAbstractTest.class));
 
     this.expected.expect(IllegalArgumentException.class);
-    new SoShaderModuleProviderAbstract(m, m) {
+    new SoShaderModuleProviderAbstract(m, m)
+    {
 
     };
   }

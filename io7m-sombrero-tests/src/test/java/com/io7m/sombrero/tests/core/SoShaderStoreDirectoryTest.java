@@ -24,12 +24,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -68,7 +66,8 @@ public final class SoShaderStoreDirectoryTest
 
     final SoShaderStoreType source = SoShaderStoreDirectory.create(base);
 
-    final Optional<SoShaderFileReferenceType> ref_opt = source.lookup("/file.txt");
+    final Optional<SoShaderFileReferenceType> ref_opt = source.lookup(
+      "/file.txt");
     if (ref_opt.isPresent()) {
       final SoShaderFileReferenceType ref = ref_opt.get();
       try (final InputStream is = ref.stream()) {
