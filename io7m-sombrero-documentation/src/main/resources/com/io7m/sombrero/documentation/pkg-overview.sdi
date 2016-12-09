@@ -1,5 +1,8 @@
 [section [title Orientation] [id pkg.orientation]]
 [subsection [title Overview] [id pkg.orientation.overview]]
 [paragraph]
-The [term [type package] ${project.parent.name}] package implements
-something.
+The [term [type package] sombrero] package implements a modular
+[link-ext [target "https://en.wikipedia.org/wiki/GLSL"] GLSL] preprocessing
+system. It provides a simple module system that allows for the publishing
+and re-use of sets of shaders.
+
