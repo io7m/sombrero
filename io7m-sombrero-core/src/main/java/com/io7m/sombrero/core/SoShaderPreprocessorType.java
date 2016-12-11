@@ -36,8 +36,61 @@ public interface SoShaderPreprocessorType
    * @throws SoShaderException On errors
    */
 
-  List<String> preprocessFile(
+  default List<String> preprocessFile(
     final Map<String, String> defines,
     final String file)
+    throws SoShaderException
+  {
+    return this.preprocessFileWithCallbacks(
+      defines,
+      file,
+      (file_name, line, column, msg) -> {
+        final StringBuilder sb = new StringBuilder(128);
+        sb.append("Warning: ");
+        sb.append(file);
+        sb.append(":");
+        sb.append(line);
+        sb.append(":");
+        sb.append(column);
+        sb.append(": ");
+        sb.append(msg);
+        sb.append(System.lineSeparator());
+        sb.append("Note: treating warnings as fatal");
+        sb.append(System.lineSeparator());
+        throw new SoShaderException(sb.toString());
+      },
+      (file_name, line, column, msg) -> {
+        final StringBuilder sb = new StringBuilder(128);
+        sb.append("Error: ");
+        sb.append(file);
+        sb.append(":");
+        sb.append(line);
+        sb.append(":");
+        sb.append(column);
+        sb.append(": ");
+        sb.append(msg);
+        sb.append(System.lineSeparator());
+        throw new SoShaderException(sb.toString());
+      });
+  }
+
+  /**
+   * Preprocess a file.
+   *
+   * @param defines    The set of preprocessor defines
+   * @param file       The file
+   * @param on_warning Evaluated on warnings
+   * @param on_error   Evaluated on errors
+   *
+   * @return The preprocessed file lines
+   *
+   * @throws SoShaderException On errors
+   */
+
+  List<String> preprocessFileWithCallbacks(
+    final Map<String, String> defines,
+    final String file,
+    final SoShaderPreprocessorCallbackWarningType on_warning,
+    final SoShaderPreprocessorCallbackErrorType on_error)
     throws SoShaderException;
 }
