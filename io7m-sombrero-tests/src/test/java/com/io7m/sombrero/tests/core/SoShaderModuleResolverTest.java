@@ -21,7 +21,6 @@ import com.io7m.sombrero.core.SoShaderFileReferenceType;
 import com.io7m.sombrero.core.SoShaderModuleType;
 import com.io7m.sombrero.core.SoShaderResolver;
 import com.io7m.sombrero.core.SoShaderResolverType;
-import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
