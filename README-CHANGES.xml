@@ -3,6 +3,21 @@
   <c:project>io7m-sombrero</c:project>
 
   <c:release c:ticket-system="com.github.io7m.sombrero">
+    <c:date>2016-12-11</c:date>
+    <c:version>0.2.0</c:version>
+    <c:item>
+      <c:date>2016-12-11</c:date>
+      <c:type-code-fix/>
+      <c:summary>Fix a few bugs related to unhandled exceptions.</c:summary>
+    </c:item>
+    <c:item>
+      <c:date>2016-12-11</c:date>
+      <c:type-code-new/>
+      <c:summary>Add the ability to pass in callbacks for warning and error messages.</c:summary>
+    </c:item>
+  </c:release>
+
+  <c:release c:ticket-system="com.github.io7m.sombrero">
     <c:date>2016-12-09</c:date>
     <c:version>0.1.0</c:version>
     <c:item>

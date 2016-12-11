@@ -17,16 +17,18 @@
 package com.io7m.sombrero.jcpp;
 
 import com.io7m.jnull.NullCheck;
-import com.io7m.junreachable.UnimplementedCodeException;
 import com.io7m.sombrero.core.SoShaderException;
 import com.io7m.sombrero.core.SoShaderExceptionIO;
 import com.io7m.sombrero.core.SoShaderFileReferenceType;
+import com.io7m.sombrero.core.SoShaderPreprocessorCallbackErrorType;
+import com.io7m.sombrero.core.SoShaderPreprocessorCallbackWarningType;
 import com.io7m.sombrero.core.SoShaderPreprocessorConfig;
 import com.io7m.sombrero.core.SoShaderPreprocessorType;
 import com.io7m.sombrero.core.SoShaderResolverType;
 import org.anarres.cpp.InputLexerSource;
 import org.anarres.cpp.LexerException;
 import org.anarres.cpp.Preprocessor;
+import org.anarres.cpp.PreprocessorListener;
 import org.anarres.cpp.Source;
 import org.anarres.cpp.Token;
 import org.anarres.cpp.VirtualFile;
@@ -90,12 +92,15 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
   }
 
   @Override
-  public List<String> preprocessFile(
+  public List<String> preprocessFileWithCallbacks(
     final Map<String, String> defines,
-    final String file)
+    final String file,
+    final SoShaderPreprocessorCallbackWarningType on_warning,
+    final SoShaderPreprocessorCallbackErrorType on_error)
     throws SoShaderException
   {
-    try (final Processor proc = new Processor(defines, file)) {
+    try (final Processor proc =
+           new Processor(defines, file, on_warning, on_error)) {
       return proc.run();
     } catch (final IOException e) {
       throw new SoShaderExceptionIO(e);
@@ -240,18 +245,24 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
     }
   }
 
-  private final class Processor implements Closeable
+  private final class Processor implements Closeable, PreprocessorListener
   {
     private final String file;
     private final Preprocessor pp;
     private final Map<String, String> defines;
+    private final SoShaderPreprocessorCallbackWarningType on_warning;
+    private final SoShaderPreprocessorCallbackErrorType on_error;
 
     Processor(
       final Map<String, String> in_defines,
-      final String in_file)
+      final String in_file,
+      final SoShaderPreprocessorCallbackWarningType in_on_warning,
+      final SoShaderPreprocessorCallbackErrorType in_on_error)
     {
       this.defines = NullCheck.notNull(in_defines, "Defines");
       this.file = NullCheck.notNull(in_file, "file");
+      this.on_warning = NullCheck.notNull(in_on_warning, "on_warning");
+      this.on_error = NullCheck.notNull(in_on_error, "on_error");
       this.pp = new Preprocessor();
     }
 
@@ -270,6 +281,7 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         this.pp.setSystemIncludePath(p.modules);
         this.pp.setFileSystem(p.filesystem);
         this.pp.addInput(p.filesystem.getFile(this.file).getSource());
+        this.pp.setListener(this);
 
         this.setupDefines();
         final int bsize = 2 << 14;
@@ -304,7 +316,7 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         }
         baos.flush();
       } catch (final LexerException e) {
-        throw new UnimplementedCodeException(e);
+        throw new IOException(e);
       }
     }
 
@@ -324,6 +336,7 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
     }
 
     private void setupDefines()
+      throws SoShaderException
     {
       for (final String name : this.defines.keySet()) {
         final String value = this.defines.get(name);
@@ -333,8 +346,48 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         try {
           this.pp.addMacro(name, value);
         } catch (final LexerException e) {
-          throw new UnimplementedCodeException(e);
+          throw new SoShaderException(e);
         }
+      }
+    }
+
+    @Override
+    public void handleWarning(
+      final @Nonnull Source source,
+      final int line,
+      final int column,
+      final @Nonnull String msg)
+      throws LexerException
+    {
+      try {
+        this.on_warning.onWarning(source.getPath(), line, column, msg);
+      } catch (final SoShaderException e) {
+        throw new LexerException(e);
+      }
+    }
+
+    @Override
+    public void handleError(
+      final @Nonnull Source source,
+      final int line,
+      final int column,
+      final @Nonnull String msg)
+      throws LexerException
+    {
+      try {
+        this.on_error.onError(source.getPath(), line, column, msg);
+      } catch (final SoShaderException e) {
+        throw new LexerException(e);
+      }
+    }
+
+    @Override
+    public void handleSourceChange(
+      final @Nonnull Source source,
+      final @Nonnull SourceChangeEvent event)
+    {
+      if (LOG.isTraceEnabled()) {
+        LOG.trace("handleSourceChange: {} {}", source, event);
       }
     }
   }

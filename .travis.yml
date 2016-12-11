@@ -16,3 +16,6 @@ install:
 script:
   - mvn clean package
 
+notifications:
+  irc: "chat.freenode.net#io7m"
+

@@ -38,6 +38,18 @@ public final class ExampleModuleProvider extends SoShaderModuleProviderAbstract
         "com.io7m.sombrero.example1",
         SoShaderStoreResource.create(
           "/com/io7m/sombrero/tests/core",
-          ExampleModuleProvider.class::getResource)));
+          ExampleModuleProvider.class::getResource)),
+
+      SoShaderModule.of(
+        "com.io7m.sombrero.module0",
+        SoShaderStoreResource.create(
+          "/com/io7m/sombrero/tests/module0",
+          ExampleModuleProvider.class::getResource)),
+      SoShaderModule.of(
+        "com.io7m.sombrero.module1",
+        SoShaderStoreResource.create(
+          "/com/io7m/sombrero/tests/module1",
+          ExampleModuleProvider.class::getResource))
+    );
   }
 }

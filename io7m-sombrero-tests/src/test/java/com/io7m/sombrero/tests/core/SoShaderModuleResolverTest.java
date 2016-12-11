@@ -21,6 +21,7 @@ import com.io7m.sombrero.core.SoShaderFileReferenceType;
 import com.io7m.sombrero.core.SoShaderModuleType;
 import com.io7m.sombrero.core.SoShaderResolver;
 import com.io7m.sombrero.core.SoShaderResolverType;
+import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -42,9 +43,11 @@ public final class SoShaderModuleResolverTest
     final SoShaderResolverType r = SoShaderResolver.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
-    Assert.assertEquals(2L, (long) m.size());
+    Assert.assertEquals(4L, (long) m.size());
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example0"));
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example1"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module0"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module1"));
 
     final Optional<SoShaderFileReferenceType> ref_opt = r.resolve(
       "com.io7m.sombrero.example0/example.txt");
@@ -66,9 +69,11 @@ public final class SoShaderModuleResolverTest
     final SoShaderResolverType r = SoShaderResolver.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
-    Assert.assertEquals(2L, (long) m.size());
+    Assert.assertEquals(4L, (long) m.size());
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example0"));
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example1"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module0"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module1"));
 
     final Optional<SoShaderFileReferenceType> ref_opt = r.resolve(
       "com.io7m.nonexistent/example.txt");
@@ -82,9 +87,11 @@ public final class SoShaderModuleResolverTest
     final SoShaderResolverType r = SoShaderResolver.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
-    Assert.assertEquals(2L, (long) m.size());
+    Assert.assertEquals(4L, (long) m.size());
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example0"));
     Assert.assertTrue(m.containsKey("com.io7m.sombrero.example1"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module0"));
+    Assert.assertTrue(m.containsKey("com.io7m.sombrero.module1"));
 
     this.expected.expect(SoShaderExceptionBadPath.class);
     r.resolve("example.txt");
