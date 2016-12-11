@@ -256,13 +256,13 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
     Processor(
       final Map<String, String> in_defines,
       final String in_file,
-      final SoShaderPreprocessorCallbackWarningType on_warning,
-      final SoShaderPreprocessorCallbackErrorType on_error)
+      final SoShaderPreprocessorCallbackWarningType in_on_warning,
+      final SoShaderPreprocessorCallbackErrorType in_on_error)
     {
       this.defines = NullCheck.notNull(in_defines, "Defines");
       this.file = NullCheck.notNull(in_file, "file");
-      this.on_warning = NullCheck.notNull(on_warning, "on_warning");
-      this.on_error = NullCheck.notNull(on_error, "on_error");
+      this.on_warning = NullCheck.notNull(in_on_warning, "on_warning");
+      this.on_error = NullCheck.notNull(in_on_error, "on_error");
       this.pp = new Preprocessor();
     }
 
