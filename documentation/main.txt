@@ -1,4 +1,4 @@
-io7m-sombrero 0.1.0 Documentation
+io7m-sombrero 0.2.0 Documentation
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Contents
