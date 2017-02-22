@@ -16,23 +16,14 @@
 
 package com.io7m.sombrero.tests.core;
 
-import com.io7m.sombrero.core.SoShaderPreprocessorConfig;
-import com.io7m.sombrero.core.SoShaderPreprocessorType;
 import com.io7m.sombrero.core.SoShaderResolverType;
-import com.io7m.sombrero.jcpp.SoShaderPreprocessorJCPP;
 import com.io7m.sombrero.serviceloader.SoShaderResolverServiceLoader;
 
-public final class SoShaderPreprocessorTest extends SoShaderPreprocessorContract
+public final class SoShaderModuleResolverServiceLoaderTest extends
+  SoShaderModuleResolverContract
 {
   @Override
-  protected SoShaderPreprocessorType create(
-    final SoShaderPreprocessorConfig config)
-  {
-    return SoShaderPreprocessorJCPP.create(config);
-  }
-
-  @Override
-  protected SoShaderResolverType resolver()
+  protected SoShaderResolverType create()
   {
     return SoShaderResolverServiceLoader.create();
   }

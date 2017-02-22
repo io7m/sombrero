@@ -14,9 +14,15 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.sombrero.core;
+package com.io7m.sombrero.serviceloader;
 
 import com.io7m.jnull.NullCheck;
+import com.io7m.sombrero.core.SoShaderException;
+import com.io7m.sombrero.core.SoShaderExceptionBadPath;
+import com.io7m.sombrero.core.SoShaderFileReferenceType;
+import com.io7m.sombrero.core.SoShaderModuleProviderType;
+import com.io7m.sombrero.core.SoShaderModuleType;
+import com.io7m.sombrero.core.SoShaderResolverType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,20 +34,21 @@ import java.util.Optional;
 import java.util.ServiceLoader;
 
 /**
- * The default implementation of the {@link SoShaderResolverType}.
+ * A <tt>ServiceLoader</tt> based implementation of the {@link
+ * SoShaderResolverType}.
  */
 
-public final class SoShaderResolver implements SoShaderResolverType
+public final class SoShaderResolverServiceLoader implements SoShaderResolverType
 {
   private static final Logger LOG;
 
   static {
-    LOG = LoggerFactory.getLogger(SoShaderResolver.class);
+    LOG = LoggerFactory.getLogger(SoShaderResolverServiceLoader.class);
   }
 
   private final Map<String, SoShaderModuleType> modules;
 
-  private SoShaderResolver(
+  private SoShaderResolverServiceLoader(
     final Map<String, SoShaderModuleType> in_modules)
   {
     this.modules =
@@ -83,7 +90,7 @@ public final class SoShaderResolver implements SoShaderResolverType
       }
     }
 
-    return new SoShaderResolver(modules);
+    return new SoShaderResolverServiceLoader(modules);
   }
 
   @Override

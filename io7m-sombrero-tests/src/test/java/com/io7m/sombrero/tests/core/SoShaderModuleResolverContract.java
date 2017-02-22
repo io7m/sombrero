@@ -19,9 +19,7 @@ package com.io7m.sombrero.tests.core;
 import com.io7m.sombrero.core.SoShaderExceptionBadPath;
 import com.io7m.sombrero.core.SoShaderFileReferenceType;
 import com.io7m.sombrero.core.SoShaderModuleType;
-import com.io7m.sombrero.core.SoShaderResolver;
 import com.io7m.sombrero.core.SoShaderResolverType;
-import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,15 +30,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
 
-public final class SoShaderModuleResolverTest
+public abstract class SoShaderModuleResolverContract
 {
   @Rule public ExpectedException expected = ExpectedException.none();
 
+  protected abstract SoShaderResolverType create();
+
   @Test
-  public void testResolver()
+  public final void testResolver()
     throws Exception
   {
-    final SoShaderResolverType r = SoShaderResolver.create();
+    final SoShaderResolverType r = this.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
     Assert.assertEquals(4L, (long) m.size());
@@ -63,10 +63,10 @@ public final class SoShaderModuleResolverTest
   }
 
   @Test
-  public void testResolverNonexistentModule()
+  public final void testResolverNonexistentModule()
     throws Exception
   {
-    final SoShaderResolverType r = SoShaderResolver.create();
+    final SoShaderResolverType r = this.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
     Assert.assertEquals(4L, (long) m.size());
@@ -81,10 +81,10 @@ public final class SoShaderModuleResolverTest
   }
 
   @Test
-  public void testResolverNoModule()
+  public final void testResolverNoModule()
     throws Exception
   {
-    final SoShaderResolverType r = SoShaderResolver.create();
+    final SoShaderResolverType r = this.create();
     final Map<String, SoShaderModuleType> m = r.available();
 
     Assert.assertEquals(4L, (long) m.size());

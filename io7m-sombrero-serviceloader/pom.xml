@@ -10,11 +10,11 @@
     <artifactId>io7m-sombrero</artifactId>
     <version>0.3.0</version>
   </parent>
-  <artifactId>io7m-sombrero-tests</artifactId>
+  <artifactId>io7m-sombrero-serviceloader</artifactId>
 
   <packaging>jar</packaging>
-  <name>io7m-sombrero-tests</name>
-  <description>Shader management (Test suite)</description>
+  <name>io7m-sombrero-serviceloader</name>
+  <description>Shader management and preprocessing (ServiceLoader backend)</description>
   <url>http://io7m.github.io/sombrero/</url>
 
   <scm>
@@ -29,36 +29,24 @@
       <artifactId>io7m-sombrero-core</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-serviceloader</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-osgi</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-jcpp</artifactId>
-      <version>${project.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>com.io7m.jnull</groupId>
       <artifactId>io7m-jnull-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.io7m.junreachable</groupId>
+      <artifactId>io7m-junreachable-core</artifactId>
+    </dependency>
 
     <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <scope>test</scope>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+      <groupId>org.immutables</groupId>
+      <artifactId>value</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 

@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.io7m.sombrero</groupId>
   <artifactId>io7m-sombrero</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 
   <packaging>pom</packaging>
   <name>io7m-sombrero</name>
@@ -19,14 +19,16 @@
     <module>io7m-sombrero-core</module>
     <module>io7m-sombrero-documentation</module>
     <module>io7m-sombrero-jcpp</module>
+    <module>io7m-sombrero-osgi</module>
+    <module>io7m-sombrero-serviceloader</module>
     <module>io7m-sombrero-tests</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <siteReposDirectory>/com/io7m/sombrero</siteReposDirectory>
-    <siteDocumentationDirectory>/com/io7m/sombrero/io7m-sombrero-documentation</siteDocumentationDirectory>
+    <siteReposDirectory>com/io7m/sombrero</siteReposDirectory>
+    <siteDocumentationDirectory>com/io7m/sombrero/io7m-sombrero-documentation</siteDocumentationDirectory>
   </properties>
 
   <licenses>
@@ -98,17 +100,17 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.21</version>
+        <version>1.7.23</version>
       </dependency>
       <dependency>
         <groupId>org.immutables</groupId>
         <artifactId>value</artifactId>
-        <version>2.3.10</version>
+        <version>2.4.3</version>
       </dependency>
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>1.1.7</version>
+        <version>1.2.1</version>
       </dependency>
       <dependency>
         <groupId>org.anarres</groupId>
@@ -120,6 +122,11 @@
             <artifactId>ant</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component.annotations</artifactId>
+        <version>1.3.0</version>
       </dependency>
 
       <dependency>
@@ -156,7 +163,7 @@
       <plugin>
         <groupId>com.io7m.changelog</groupId>
         <artifactId>io7m-changelog-plugin</artifactId>
-        <version>2.1.2</version>
+        <version>3.0.3</version>
         <inherited>false</inherited>
         <configuration>
           <file>README-CHANGES.xml</file>
@@ -248,7 +255,7 @@
         <plugin>
           <groupId>com.io7m.kstructural</groupId>
           <artifactId>io7m-kstructural-maven-plugin</artifactId>
-          <version>0.3.0</version>
+          <version>0.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
