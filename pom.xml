@@ -19,6 +19,7 @@
     <module>io7m-sombrero-core</module>
     <module>io7m-sombrero-documentation</module>
     <module>io7m-sombrero-jcpp</module>
+    <module>io7m-sombrero-osgi</module>
     <module>io7m-sombrero-serviceloader</module>
     <module>io7m-sombrero-tests</module>
   </modules>

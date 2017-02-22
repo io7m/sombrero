@@ -10,6 +10,12 @@
       <c:type-code-change/>
       <c:summary>Move the ServiceLoader resolver into its own module.</c:summary>
     </c:item>
+    <c:item>
+      <c:date>2017-02-22</c:date>
+      <c:type-code-new/>
+      <c:ticket>1</c:ticket>
+      <c:summary>Add an OSGi resolver.</c:summary>
+    </c:item>
   </c:release>
 
   <c:release c:ticket-system="com.github.io7m.sombrero">
