@@ -20,7 +20,7 @@ import com.io7m.junreachable.UnreachableCodeException;
 import com.io7m.sombrero.core.SoShaderExceptionIO;
 import com.io7m.sombrero.core.SoShaderPreprocessorConfig;
 import com.io7m.sombrero.core.SoShaderPreprocessorType;
-import com.io7m.sombrero.core.SoShaderResolver;
+import com.io7m.sombrero.core.SoShaderResolverType;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -40,13 +40,15 @@ public abstract class SoShaderPreprocessorContract
   protected abstract SoShaderPreprocessorType create(
     SoShaderPreprocessorConfig config);
 
+  protected abstract SoShaderResolverType resolver();
+
   @Test
   public final void testTrivial()
     throws Exception
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -66,7 +68,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -87,7 +89,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -108,7 +110,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -127,7 +129,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -146,7 +148,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -165,7 +167,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -193,7 +195,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -220,7 +222,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 
@@ -260,7 +262,7 @@ public abstract class SoShaderPreprocessorContract
   {
     final SoShaderPreprocessorConfig.Builder b =
       SoShaderPreprocessorConfig.builder();
-    b.setResolver(SoShaderResolver.create());
+    b.setResolver(this.resolver());
     b.setVersion(330);
     final SoShaderPreprocessorConfig c = b.build();
 

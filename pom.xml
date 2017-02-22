@@ -19,6 +19,7 @@
     <module>io7m-sombrero-core</module>
     <module>io7m-sombrero-documentation</module>
     <module>io7m-sombrero-jcpp</module>
+    <module>io7m-sombrero-serviceloader</module>
     <module>io7m-sombrero-tests</module>
   </modules>
 
@@ -120,6 +121,11 @@
             <artifactId>ant</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component.annotations</artifactId>
+        <version>1.3.0</version>
       </dependency>
 
       <dependency>
