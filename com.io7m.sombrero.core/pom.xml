@@ -7,14 +7,14 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.io7m.sombrero</groupId>
-    <artifactId>io7m-sombrero</artifactId>
+    <artifactId>com.io7m.sombrero</artifactId>
     <version>0.3.0</version>
   </parent>
-  <artifactId>io7m-sombrero-osgi</artifactId>
+  <artifactId>com.io7m.sombrero.core</artifactId>
 
   <packaging>bundle</packaging>
-  <name>io7m-sombrero-osgi</name>
-  <description>Shader management and preprocessing (OSGi backend)</description>
+  <name>com.io7m.sombrero.core</name>
+  <description>Shader management and preprocessing (Core)</description>
   <url>http://io7m.github.io/sombrero/</url>
 
   <scm>
@@ -25,18 +25,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-core</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.io7m.jnull</groupId>
-      <artifactId>io7m-jnull-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.io7m.junreachable</groupId>
-      <artifactId>io7m-junreachable-core</artifactId>
+      <artifactId>com.io7m.jnull.core</artifactId>
     </dependency>
 
     <dependency>
@@ -46,11 +36,6 @@
     <dependency>
       <groupId>org.immutables</groupId>
       <artifactId>value</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.service.component.annotations</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -71,7 +56,7 @@
         <configuration>
           <instructions>
             <Export-Package>
-              com.io7m.sombrero.osgi
+              com.io7m.sombrero.core
             </Export-Package>
           </instructions>
         </configuration>
