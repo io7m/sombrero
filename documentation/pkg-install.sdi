@@ -10,7 +10,7 @@ The project can be compiled and installed with
 [subsection [title Maven] [id pkg.install.maven]]
 [paragraph]
 Regular releases are made to the
-[link-ext [target "http://search.maven.org/#search%7Cga%7C1%7Cio7m-sombrero"] Central Repository].
+[link-ext [target "http://search.maven.org/#search%7Cga%7C1%7Ccom.io7m.sombrero"] Central Repository].
 
 [paragraph]
 All [link-ext [target "http://io7m.com"] io7m.com] packages use

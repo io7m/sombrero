@@ -1,4 +1,4 @@
-io7m-sombrero 0.3.0 Documentation
+com.io7m.sombrero 0.3.1 Documentation
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Contents
@@ -45,7 +45,7 @@ io7m-sombrero 0.3.0 Documentation
 1.2.2 Maven [id: pkg.install.maven]
 
 1     Regular releases are made to the Central Repository [url:
-      http://search.maven.org/#search%7Cga%7C1%7Cio7m-sombrero].
+      http://search.maven.org/#search%7Cga%7C1%7Ccom.io7m.sombrero].
 
 2     All io7m.com [url: http://io7m.com] packages use Semantic Versioning [0],
       which implies that it is always safe to use version ranges with an
@@ -59,8 +59,8 @@ io7m-sombrero 0.3.0 Documentation
 
 1.4 License [id: pkg.license]
 
-1     All files distributed with the io7m-sombrero package are placed under the
-      following license:
+1     All files distributed with the com.io7m.sombrero package are placed under
+      the following license:
 
       1.4.2.2 License
       ───────────────

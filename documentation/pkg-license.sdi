@@ -1,6 +1,6 @@
 [section [title License] [id pkg.license]]
 [paragraph]
-All files distributed with the [term [type package] io7m-sombrero]
+All files distributed with the [term [type package] com.io7m.sombrero]
 package are placed under the following license:
 
 [formal-item [title License]]
