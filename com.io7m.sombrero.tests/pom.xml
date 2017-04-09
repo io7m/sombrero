@@ -7,13 +7,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.io7m.sombrero</groupId>
-    <artifactId>io7m-sombrero</artifactId>
-    <version>0.3.0</version>
+    <artifactId>com.io7m.sombrero</artifactId>
+    <version>0.3.1</version>
   </parent>
-  <artifactId>io7m-sombrero-tests</artifactId>
+  <artifactId>com.io7m.sombrero.tests</artifactId>
 
   <packaging>jar</packaging>
-  <name>io7m-sombrero-tests</name>
+  <name>com.io7m.sombrero.tests</name>
   <description>Shader management (Test suite)</description>
   <url>http://io7m.github.io/sombrero/</url>
 
@@ -26,28 +26,28 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-core</artifactId>
+      <artifactId>com.io7m.sombrero.core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-serviceloader</artifactId>
+      <artifactId>com.io7m.sombrero.serviceloader</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-osgi</artifactId>
+      <artifactId>com.io7m.sombrero.osgi</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-jcpp</artifactId>
+      <artifactId>com.io7m.sombrero.jcpp</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>com.io7m.jnull</groupId>
-      <artifactId>io7m-jnull-core</artifactId>
+      <groupId>com.io7m.junreachable</groupId>
+      <artifactId>com.io7m.junreachable.core</artifactId>
     </dependency>
 
     <dependency>
@@ -60,6 +60,11 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -68,6 +73,18 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+
+      <!-- Ignore dependencies that bytecode analysis gets wrong. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+          <failOnWarning>true</failOnWarning>
+          <ignoredUnusedDeclaredDependencies>
+            <ignoredUnusedDeclaredDependency>ch.qos.logback:logback-classic:*</ignoredUnusedDeclaredDependency>
+          </ignoredUnusedDeclaredDependencies>
+        </configuration>
       </plugin>
     </plugins>
   </build>

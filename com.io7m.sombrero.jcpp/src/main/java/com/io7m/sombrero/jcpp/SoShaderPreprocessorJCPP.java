@@ -37,7 +37,6 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -114,20 +113,19 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
 
     }
 
-    @Nonnull
     @Override
     public VirtualFile getFile(
-      final @Nonnull String path)
+      final String path)
     {
       LOG.trace("getFile: {}", path);
       return new ProcessorFile(path);
     }
 
-    @Nonnull
+
     @Override
     public VirtualFile getFile(
-      final @Nonnull String dir,
-      final @Nonnull String name)
+      final String dir,
+      final String name)
     {
       if (LOG.isTraceEnabled()) {
         LOG.trace("getFile: {} {}", dir, name);
@@ -169,14 +167,12 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         return true;
       }
 
-      @Nonnull
       @Override
       public String getPath()
       {
         return this.file_name;
       }
 
-      @Nonnull
       @Override
       public String getName()
       {
@@ -193,7 +189,6 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         return new ProcessorFile(this.file_name.substring(0, idx));
       }
 
-      @Nonnull
       @Override
       public VirtualFile getChildFile(
         final String name)
@@ -201,7 +196,6 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
         return new ProcessorFile(this.file_name + "/" + name);
       }
 
-      @Nonnull
       @Override
       public Source getSource()
         throws IOException
@@ -353,10 +347,10 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
 
     @Override
     public void handleWarning(
-      final @Nonnull Source source,
+      final Source source,
       final int line,
       final int column,
-      final @Nonnull String msg)
+      final String msg)
       throws LexerException
     {
       try {
@@ -368,10 +362,10 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
 
     @Override
     public void handleError(
-      final @Nonnull Source source,
+      final Source source,
       final int line,
       final int column,
-      final @Nonnull String msg)
+      final String msg)
       throws LexerException
     {
       try {
@@ -383,8 +377,8 @@ public final class SoShaderPreprocessorJCPP implements SoShaderPreprocessorType
 
     @Override
     public void handleSourceChange(
-      final @Nonnull Source source,
-      final @Nonnull SourceChangeEvent event)
+      final Source source,
+      final SourceChangeEvent event)
     {
       if (LOG.isTraceEnabled()) {
         LOG.trace("handleSourceChange: {} {}", source, event);

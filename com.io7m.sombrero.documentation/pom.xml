@@ -7,15 +7,19 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.io7m.sombrero</groupId>
-    <artifactId>io7m-sombrero</artifactId>
-    <version>0.3.0</version>
+    <artifactId>com.io7m.sombrero</artifactId>
+    <version>0.3.1</version>
   </parent>
-  <artifactId>io7m-sombrero-documentation</artifactId>
+  <artifactId>com.io7m.sombrero.documentation</artifactId>
 
   <packaging>jar</packaging>
-  <name>io7m-sombrero-documentation</name>
+  <name>com.io7m.sombrero.documentation</name>
   <description>Shader management and preprocessing (Documentation)</description>
   <url>http://io7m.github.io/sombrero/</url>
+
+  <properties>
+    <mdep.analyze.skip>true</mdep.analyze.skip>
+  </properties>
 
   <scm>
     <url>${project.parent.scm.url}</url>
@@ -26,18 +30,18 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-core</artifactId>
+      <artifactId>com.io7m.sombrero.core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-jcpp</artifactId>
+      <artifactId>com.io7m.sombrero.jcpp</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.io7m.jnull</groupId>
-      <artifactId>io7m-jnull-core</artifactId>
+      <artifactId>com.io7m.jnull.core</artifactId>
     </dependency>
   </dependencies>
 

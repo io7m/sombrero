@@ -7,13 +7,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.io7m.sombrero</groupId>
-    <artifactId>io7m-sombrero</artifactId>
-    <version>0.3.0</version>
+    <artifactId>com.io7m.sombrero</artifactId>
+    <version>0.3.1</version>
   </parent>
-  <artifactId>io7m-sombrero-jcpp</artifactId>
+  <artifactId>com.io7m.sombrero.jcpp</artifactId>
 
   <packaging>bundle</packaging>
-  <name>io7m-sombrero-jcpp</name>
+  <name>com.io7m.sombrero.jcpp</name>
   <description>Shader management and preprocessing (JCPP backend)</description>
   <url>http://io7m.github.io/sombrero/</url>
 
@@ -26,17 +26,13 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>io7m-sombrero-core</artifactId>
+      <artifactId>com.io7m.sombrero.core</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.io7m.jnull</groupId>
-      <artifactId>io7m-jnull-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.io7m.junreachable</groupId>
-      <artifactId>io7m-junreachable-core</artifactId>
+      <artifactId>com.io7m.jnull.core</artifactId>
     </dependency>
 
     <dependency>
@@ -48,17 +44,16 @@
       <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.immutables</groupId>
-      <artifactId>value</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.anarres</groupId>
       <artifactId>jcpp</artifactId>
       <exclusions>
         <exclusion>
           <groupId>org.apache.ant</groupId>
           <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.google.code.findbugs</groupId>
+          <artifactId>annotations</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
