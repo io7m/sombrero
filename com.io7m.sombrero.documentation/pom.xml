@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.io7m.sombrero</groupId>
     <artifactId>com.io7m.sombrero</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
   </parent>
   <artifactId>com.io7m.sombrero.documentation</artifactId>
 
